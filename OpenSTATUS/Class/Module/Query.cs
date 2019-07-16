@@ -44,7 +44,7 @@ namespace OpenSTATUS.Class.Module
                     {
                         servers[i] = GetServerStats(servers[i]);
                         TotalPlayer += servers[i].Players.Count;
-                        if (0 < DateTime.UtcNow.CompareTo(servers[i].LastMessage.Timestamp.AddSeconds(60).DateTime))
+                        if (0 < DateTime.UtcNow.CompareTo(servers[i].LastMessage.Timestamp.AddDays(10).DateTime))
                         {
                             await servers[i].LastMessage.DeleteAsync();
                             servers[i].LastMessage = await _Core.discord.SendEmbedAsync(GetEmbed(servers[i]));
